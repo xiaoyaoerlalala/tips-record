@@ -1,0 +1,14 @@
+1.unicode是一种“编码”，所谓编码就是一个编号(数字)到字符的一种映射关系，就仅仅是一种一对一的映射而已，可以理解成一个很大的对应表格
+2.GBK、UTF-8是一种“编码格式”，是用来序列化或存储1中提到的那个“编号(数字)”的一种“格式”；GBK和UTF-8都是用来序列化或存储unicode编码的数据的，
+  但是分别是2种不同的格式； 他们俩除了格式不一样之外，他们所关心的unicode编码范围也不一样，utf-8考虑了很多种不同国家的字符，涵盖整个unicode码表，
+  所以其存储一个字符的编码的时候，使用的字节长度也从1字节到4字节不等；而GBK只考虑中文——在unicode中的一小部分——的字符，的编码，所以它算好了只要2个
+  字节就能涵盖到绝大多数常用中文(2个字节能表示6w多种字符),所以它存储一个字符的时候，所用的字节长度是固定的；
+3.new String()得到的String是-8859-1格式的，所以在其他编码格式下会产生"？？？？？？"乱码。
+4.gbk编码转为utf-8编码方法：
+  public static void main(String... args) throws Throwable {       
+    String errStr = "errStr";        
+    System.out.println(recover(errStr));    
+  }    
+  public static String recover(String str) throws Throwable {        
+    return new String(str.getBytes("GBK"), "UTF-8");    
+  }
