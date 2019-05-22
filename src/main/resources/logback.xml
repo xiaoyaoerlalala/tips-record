@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Reference Manual http://logback.qos.ch/manual/index.html -->
+
+<configuration scan="true">
+	<property name="log_dir" value="D:/logs/hkBet/log"/>
+	<property name="max_file_size" value="200MB"/>
+	
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder charset="UTF-8">
+            <pattern>%d{HH:mm:ss.SSS} [%-5level][%thread][%logger] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log_dir}/hkbet-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<maxHistory>30</maxHistory>
+			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+					<maxFileSize>${max_file_size}</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%level] %logger - %msg%n</pattern>
+		</encoder>
+    </appender>
+    
+    <root level="info">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="RollingFile"/>
+    </root>
+    <logger name="com.erayt" level="info" />
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.apache" level="info"/>
+	
+</configuration>
