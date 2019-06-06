@@ -5,14 +5,14 @@
 	   xmlns:mvc="http://www.springframework.org/schema/mvc"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<!-- 开启注解扫描 -->
-	<context:annotation-config />
+	<!--这里加载testProperties.properties使用重写后的PropertyUtil-->
+	<bean id="configure"
+		  class="com.houyao.propertiesTest.PropertyUtil">
+		<property name="locations">
+			<list>
+				<value>classpath:properties/testProperties.properties</value>
+			</list>
+		</property>
+	</bean>
 
-	<!-- 注解扫面包路径 -->
-	<context:component-scan base-package="com.houyao.tableExample.dao" />
-
-	<!--<import resource="spring-quartz.xml"/>-->
-	<!--<import resource="spring-quartz3.xml"/>-->
-	<!--<import resource="spring-datasource.xml"/>-->
-	<import resource="spring-testProperties.xml"/>
 </beans>
