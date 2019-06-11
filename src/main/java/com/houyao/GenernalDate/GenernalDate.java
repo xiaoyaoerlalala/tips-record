@@ -44,4 +44,6 @@ public class GenernalDate {
         long millis = calendar.getTimeInMillis();
         return millis;
     }
+
+
 }
