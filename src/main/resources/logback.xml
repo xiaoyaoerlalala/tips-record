@@ -3,7 +3,7 @@
 <!-- Reference Manual http://logback.qos.ch/manual/index.html -->
 
 <configuration scan="true">
-	<property name="log_dir" value="D:/logs/hkBet/log"/>
+	<property name="log_dir" value="./log"/>
 	<property name="max_file_size" value="200MB"/>
 	
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -19,7 +19,7 @@
         </filter>
 		
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${log_dir}/hkbet-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+			<fileNamePattern>${log_dir}/logger-%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
 			<maxHistory>30</maxHistory>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 					<maxFileSize>${max_file_size}</maxFileSize>
@@ -29,7 +29,27 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%level] %logger - %msg%n</pattern>
 		</encoder>
     </appender>
-    
+    <!--  控制某个类单独输出日志到文件中————开始  -->
+    <appender name="lipstick"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log_dir}/testAClass-%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>30</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss} [%F:%L] %-5level - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="Aclasslog" additivity="false">
+        <appender-ref ref="lipstick"/>
+    </logger>
+    <!--  控制某个类单独输出日志到文件中————结束  -->
+
     <root level="info">
         <appender-ref ref="stdout" />
         <appender-ref ref="RollingFile"/>

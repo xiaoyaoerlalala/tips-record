@@ -19,5 +19,6 @@ public class LoggerExample {
         } catch(Exception e) {
             logger.error("执行出现异常：" + e.getMessage());
         }
+        TestAClassLog.testAClassLog();
     }
 }
