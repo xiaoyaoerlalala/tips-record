@@ -23,7 +23,7 @@ public class SetLastModified {
     *
     */
     public static void test(){
-        File file = new File("D:\\config\\hkbet_interface\\bak\\test.txt");
+        File file = new File("D:\\config\\hkbet_interface\\bak\\HKA0510D.m37.gz-20190510");
         try {
             file.createNewFile();
         } catch (IOException e) {
@@ -32,7 +32,7 @@ public class SetLastModified {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         //月份设置时0-11对应1-12月
-        calendar.set(2019,4,11);
+        calendar.set(2019,4,10);
         long millis = calendar.getTimeInMillis();
         file.setLastModified(millis);
     }

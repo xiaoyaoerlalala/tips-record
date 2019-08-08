@@ -41,6 +41,9 @@ public class FastJsonTest {
         1，对于JSON对象与JSON格式字符串的转换可以直接用 toJSONString()这个方法。
         2，javaBean与JSON格式字符串之间的转换要用到：JSON.toJSONString(obj);
         3，javaBean与json对象间的转换使用：JSON.toJSON(obj)，然后使用强制类型转换，JSONObject或者JSONArray。*/
+        Student student = new Student();
+        student.setStudentAge(null);
+        student.setStudentName(null);
     }
     /**
     * @Description: json字符串-简单对象型与JSONObject之间的转换

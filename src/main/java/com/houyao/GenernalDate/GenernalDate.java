@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class GenernalDate {
     public static void main(String[] args) {
-        System.out.println(getNowDate());
+        System.out.println(getSpecifiedMillis());
     }
 
     /**
@@ -40,7 +40,7 @@ public class GenernalDate {
         Calendar calendar = Calendar.getInstance();
         calendar.clear();
         //注意此处有坑：0表示1月，1表示2月，以此类推
-        calendar.set(2018,0,1);
+        calendar.set(2019,6,27);
         long millis = calendar.getTimeInMillis();
         return millis;
     }
