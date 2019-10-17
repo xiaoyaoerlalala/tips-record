@@ -18,6 +18,9 @@ public class ListExample {
         a1.add("java02");
         a1.add("java03");
         sop(a1);
+        example(a1);
+        sop(a1);
+        //使用迭代器遍历
         ListIterator li = a1.listIterator();
         while(li.hasNext()){
             Object obj = li.next();
@@ -27,5 +30,17 @@ public class ListExample {
             }
         }
         sop(a1);
+    }
+
+    /**
+     * 正确的遍历
+     * @param list
+     */
+    public static void example(ArrayList list){
+        for (int i=0;i<list.size();i++) {
+            if(list.get(i).toString().equals("java01")){
+                list.remove(list.get(i));
+            }
+        }
     }
 }
