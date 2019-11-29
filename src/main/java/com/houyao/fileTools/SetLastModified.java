@@ -23,7 +23,7 @@ public class SetLastModified {
     *
     */
     public static void test(){
-        File file = new File("D:\\config\\hkbet_interface\\bak\\HKA0510D.m37.gz-20190510");
+        File file = new File("D:\\config\\hkbet_interface\\bak\\HKA0510D.m02.gz.202401060");
         try {
             file.createNewFile();
         } catch (IOException e) {

@@ -1,4 +1,4 @@
-package com.houyao.lambda;
+package com.houyao.jdk8.lambda;
 
 /**
  * 可以直接在 lambda 表达式中访问外层的局部变量

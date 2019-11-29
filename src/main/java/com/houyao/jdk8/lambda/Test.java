@@ -1,4 +1,4 @@
-package com.houyao.lambda;
+package com.houyao.jdk8.lambda;
 
 /**
  * 无参数，无返回值
